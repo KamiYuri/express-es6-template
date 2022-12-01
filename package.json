@@ -1,0 +1,31 @@
+{
+  "name": "express-es6",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "watch:dev": "nodemon",
+    "dev": "NODE_ENV=development yarn build && yarn server",
+    "server": "node ./dist/bin/www",
+    "build": "yarn clean && yarn transpile",
+    "transpile": "babel ./src --out-dir dist",
+    "clean": "rimraf dist"
+  },
+  "nodemonConfig": {
+    "exec": "DEBUG=express-es6:* yarn run dev",
+    "watch": ["src/**"],
+    "ignore": ["**/__tests__/**", "*.test.js", "*.spec.js"]
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "nodemon": "^2.0.20",
+    "rimraf": "^3.0.2"
+  }
+}
